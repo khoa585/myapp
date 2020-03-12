@@ -1,0 +1,27 @@
+import React from 'react';
+import './App.css';
+import RourerURL from '../RouterURL/RourerURL';
+import Headers from '../Header/Headers';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Submit from '../Submit/Submit';
+import Discount from '../Home/Discount';
+import { Provider } from 'react-redux';
+import Loading from '../../loading/Loading';
+import configmiddleware from './../../redux/configmiddleware';
+function App() {
+  const store = configmiddleware();
+  return (
+    <Provider store={store}>
+      <Router>
+        <>
+          <Headers></Headers>
+          <RourerURL></RourerURL>
+          <Submit></Submit>
+          <Discount></Discount>
+          <Loading></Loading>
+        </>
+      </Router>
+    </Provider>
+  );
+}
+export default App;

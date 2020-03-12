@@ -1,0 +1,83 @@
+const styles = () => ({
+    background__: {
+        overflow: 'hidden',
+        height: 100,
+        backgroundSize: 100,
+        width: '100%',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundImage: 'url(https://i.pinimg.com/originals/58/13/b0/5813b0e5ad5fac5fab00a4e3906ba5c8.jpg)',
+    },
+    background___: {
+        overflow: 'hidden',
+        height: 100,
+        width: '100%',
+        backgroundSize: 100,
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundImage: 'url(https://i.pinimg.com/originals/7b/21/fb/7b21fbeb87183edcae6e1abed67e56f5.jpg)',
+    },
+    background____: {
+        overflow: 'hidden',
+        height: 100,
+        width: '100%',
+        backgroundSize: 100,
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundImage: 'url(https://i.pinimg.com/564x/1f/c1/0f/1fc10fafeb1bacf734116f0ca4248f3a.jpg)',
+    },
+    background_____: {
+        overflow: 'hidden',
+        height: 100,
+        width: '100%',
+        backgroundSize: 100,
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundImage: 'url(https://i.pinimg.com/originals/18/2c/f4/182cf4ffda1df7217e89f98c24f07d0a.jpg)',
+    },
+    text: {
+        width: '100%',
+        height: 100
+    },
+    swiper_container_: {
+        height: '90vh',
+        overflow: 'hidden'
+    },
+    size: {
+        fontSize: '3em',
+        color: ' #fff',
+        fontFamily: 'monospace',
+        fontWeight: 'bold',
+        left: '3%',
+        position: 'relative',
+    },
+    Discoer: {
+        color: '#ffffff',
+        position: 'absolute',
+        fontSize: '2.5em',
+        transform: 'rotate(45deg)',
+        fontFamily: 'monospace',
+        right: '10%',
+        fontWeight: 900,
+        letterSpacing: '.4em',
+        top: '20%',
+        background: '#c2424f',
+        textTransform: 'uppercase',
+    },
+    Discoer_: {
+        bottom: '10%',
+        color: '#ffffff',
+        left: '-2%',
+        position: 'absolute',
+        fontSize: '1em',
+        transform: 'rotate(-90deg)',
+        fontFamily: 'monospace',
+        fontWeight: 'bolder',
+        textTransform: 'uppercase',
+    }
+});
+export default styles;
