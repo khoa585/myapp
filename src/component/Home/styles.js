@@ -1,44 +1,4 @@
 const styles = () => ({
-    background__: {
-        overflow: 'hidden',
-        height: 100,
-        backgroundSize: 100,
-        width: '100%',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundImage: 'url(https://i.pinimg.com/originals/58/13/b0/5813b0e5ad5fac5fab00a4e3906ba5c8.jpg)',
-    },
-    background___: {
-        overflow: 'hidden',
-        height: 100,
-        width: '100%',
-        backgroundSize: 100,
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundImage: 'url(https://i.pinimg.com/originals/7b/21/fb/7b21fbeb87183edcae6e1abed67e56f5.jpg)',
-    },
-    background____: {
-        overflow: 'hidden',
-        height: 100,
-        width: '100%',
-        backgroundSize: 100,
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundImage: 'url(https://i.pinimg.com/564x/1f/c1/0f/1fc10fafeb1bacf734116f0ca4248f3a.jpg)',
-    },
-    background_____: {
-        overflow: 'hidden',
-        height: 100,
-        width: '100%',
-        backgroundSize: 100,
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundImage: 'url(https://i.pinimg.com/originals/18/2c/f4/182cf4ffda1df7217e89f98c24f07d0a.jpg)',
-    },
     text: {
         width: '100%',
         height: 100
@@ -52,7 +12,7 @@ const styles = () => ({
         color: ' #fff',
         fontFamily: 'monospace',
         fontWeight: 'bold',
-        left: '3%',
+        left: '4%',
         position: 'relative',
     },
     Discoer: {
@@ -67,6 +27,7 @@ const styles = () => ({
         top: '20%',
         background: '#c2424f',
         textTransform: 'uppercase',
+        animation: 'jouney 3s',
     },
     Discoer_: {
         bottom: '10%',
@@ -78,6 +39,110 @@ const styles = () => ({
         fontFamily: 'monospace',
         fontWeight: 'bolder',
         textTransform: 'uppercase',
+    },
+    swiperWrapper: {
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    swiperSlide_: {
+        background: '#dbb5a2',
+        height: '60vh'
+    },
+    shoesdesign: {
+        display: 'flex',
+        flexDirection: 'initial',
+        justifyContent: 'space-between',
+        height: '100%',
+    },
+    left: {
+        background: '#e1eae5',
+        height: '30vh',
+        width: '100%',
+        borderRight: '1px solid #cfd4e0',
+        cursor: 'pointer',
+        overflow: 'hidden',
+    },
+    between: {
+        background: '#e3f7ff',
+        height: '30vh',
+        width: '100%',
+        borderRight: '1px solid #cfd4e0',
+        cursor: 'pointer',
+        overflow: 'hidden',
+    },
+    right: {
+        background: '#ffe7e3',
+        height: '30vh',
+        width: '100%',
+        cursor: 'pointer',
+        overflow: 'hidden',
+    },
+    nike: {
+        background: '#f9f9f9',
+        width: '100%',
+        height: '60vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    adidas: {
+        background: 'red',
+        width: '100%',
+        height: '60vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    container: {
+        background: '#e2e2e2',
+        width: '70%',
+        height: '50vh',
+        borderRadius: 20,
+        overflow :'hidden',
+    },
+    logoimg: {
+        width: 80,
+        position: 'relative',
+        top: 20,
+        left: 30,
+    },
+    imgnike_: {
+        height: 150,
+        transform: 'rotate(-40deg)',
+    },
+    img15_: {
+        transform: 'rotate(-40deg)',
+        height: 250,
+    },
+    text_: {
+        top: '20%',
+        left: '5%',
+        position: 'absolute',
+        fontSize: '3em',
+        fontWeight: 'bolder',
+        lineHeight: ' 60px',
+        color: '#737373',
+        textTransform: 'uppercase',
+    },
+    container__: {
+        background: '#b91f31',
+        width: '70%',
+        height: '50vh',
+        borderRadius: 20,
+        overflow :'hidden',
+    },
+    text__: {
+        top: '20%',
+        left: '5%',
+        position: 'absolute',
+        fontSize: '3em',
+        fontWeight: 'bolder',
+        lineHeight: ' 60px',
+        color: '#fff',
+        textTransform: 'uppercase',
+    },
+    icon_ : {
+        position:'relative'
     }
 });
 export default styles;

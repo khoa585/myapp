@@ -1,19 +1,30 @@
 import axios from 'axios';
 
-class Service{
-    constructor(){
-        const service = axios.create();
+class Service {
+    constructor() {
+        const service = axios.create({ headers: {} });
         service.interceptors.response.use(this.handleSuccess, this.handleError);
         this.service = service;
     }
-    handleSuccess (response){
+    handleSuccess(response) {
         return response;
     }
-    handleError = error =>{
+    handleError = error => {
         return Promise.reject(error);
     }
-    get(endpoint){
+    setHeader(value, token) {
+        axios.defaults.headers.common[value] = token;
+    }
+    get(endpoint) {
         return this.service.get(endpoint);
+    }
+    post(endpoint, payload) {
+        return this.service.request({
+            method: 'POST',
+            url: endpoint,
+            responseType: 'json',
+            data: payload
+        });
     }
 }
 

@@ -36,12 +36,14 @@ class Products extends Component {
         return str;
     }
     render() {
+        const { img } = this.props;
+        const result = img.split(/uploads\\/g);
         return (
             <div className='col-lg-4 col-md-6 padding-right-9 padding-top-18'>
                 <div className='thumb'>
                     <div className='hover-effect custom-spacing cbr-gallery style-1'>
                         <div className='gallery-item'>
-                            <img className='response img-responsive' src='img/img4.jpg' alt='img15' />
+                            <img className='response img-responsive' src={result[1]} alt='img15' />
                             <div className='products__sale'>
                                 {this.ShowSale(this.props.sale)}
                             </div>

@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-class MySidenav2 extends Component {
-    render() {
-        const { onshowThree } = this.props;
+function MySidenav2(props){
+        const { onshowThree } = props;
         return (
             <div id={onshowThree === true ? 'mySidenav_Two' : ''} className="sidenav_Two">
                 <div className="row class">
@@ -21,5 +20,4 @@ class MySidenav2 extends Component {
             </div>
         );
     }
-}
-export default MySidenav2;
+export default React.memo(MySidenav2);

@@ -1,89 +1,88 @@
-import React, { Component } from 'react';
-class Detailitem extends Component {
-    showsale = (sale) => {
-        if (sale === true) {
-            return <span><i className="far fa-check-circle" /></span>;
-        } else {
-            return <span><i style={{ color: '#b50000' }} class="far fa-times-circle"></i></span>;
-        }
-    }
-    formatNumber = (num) => {
-        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
-    }
-    render() {
-        const { task } = this.props;
-        const sale = task.sale;
-        const productImage = task.productImage;
-        console.log(productImage);
-        return (
-            <>
-                <section className="shop__item">
-                    <div className="container px-0">
-                        <div className="row">
-                            <div className="col-md-6 item__image pl-0">
-                                <div className="product__image ml-auto">
-                                    <img className="img-responsive" src="img/img15.png" alt="cabbage" />
-                                    <div className="products__sale">
-                                        <span className="onsale">HOT</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6 item__content">
-                                <div className="item__info">
-                                    <div className="rating">
-                                        <span>
-                                            <i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" />
-                                            <i className="fas fa-star" /><i className="fas fa-star-half-alt" /></span>
-                                        <a href="/#"><i className="fas fa-pencil-alt" /> 3 Reviews</a>
-                                    </div>
-                                    <p>Description: {task.description}</p>
-                                    <p>Name: {task.name} </p>
-                                    <div className="meta">
-                                        <span className="stock">Sale : {this.showsale(sale)}</span>                                    </div>
-                                </div>
-                                <hr />
-                                <div className="price">
-                                    <h2 className="price">$ {this.formatNumber(task.price)}</h2>
-                                </div>
-                                <div className="add__cart d-flex align-items-center">
-                                    <button className="btnAdd"><i className="fas fa-shopping-cart" /> ADD TO CART</button>
-                                    <div className="extra">
-                                        <a href="/#"><i className="far fa-heart" /></a>
-                                    </div>
-                                    <div className="extra">
-                                        <a href="/#"><i className="fas fa-sync-alt" /></a>
-                                    </div>
-                                    <div className="extra">
-                                        <a href="/#"><i className="far fa-envelope" /></a>
-                                    </div>
-                                </div>
-                                <hr />
-                                <div className="meta__link">
-                                    <div className="cats__link">
-                                        <span>Categories:</span><span className="cats__link"><a href="/#"> Veggies</a></span>
-                                    </div>
-                                    <ul className="meta__social">
-                                        <li className="twitter ticon">
-                                            <a href="/#" target="_blank"><i className="fab fa-twitter" />  Tweet</a>
-                                        </li>
-                                        <li className="facebook ticon">
-                                            <a href="/#" target="_blank"><i className="fab fa-facebook-f" />  Share</a>
-                                        </li>
-                                        <li className="google-plus ticon">
-                                            <a href="/#" target="_blank"><i className="fab fa-google-plus-g" />  Google+</a>
-                                        </li>
-                                        <li className="pinterest ticon">
-                                            <a href="/#" target="_blank"><i className="fab fa-pinterest" />  Pinterest</a>
-                                        </li>
-                                    </ul>
-                                </div>
+import React, { useState } from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import styles from './style';
+import Swiper from 'react-id-swiper';
+import 'swiper/css/swiper.css';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import { useSelector, useDispatch } from 'react-redux';
+import Item_thumpai from './Item_thumpai';
+import DragHandleIcon from '@material-ui/icons/DragHandle';
+import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
+const Detailitem = (props) => {
+    const [state, setstate] = useState({ menua: false });
+    const { classes } = props;
+    const Param_ = {
+        Swiper,
+        slidesPerView: 2,
+        spaceBetween: 30,
+        centeredSlides: true,
+        grabCursor: true,
+        freeMode: true,
+        freeModeSticky: true,
+        loop: true,
+        autoplay: {
+            delay: 8000000,
+            disableOnInteraction: false,
+        },
+
+        height: 50,
+        scrollbar: {
+            el: '.swiper-scrollbar',
+            hide: true,
+        },
+    };
+    const handclickDrag = (sta, open) => {
+        setstate({
+            ...state,
+            [sta]: !open,
+        });
+    };
+    const { task } = props;
+    const sale = task.sale;
+    const productImage = task.productImage;
+    const result = productImage.split(/uploads\\/g);
+    const tasks = useSelector(state => state.task);
+    return (
+        <div className="container-fluid">
+            <div className="row shopping__card__wrapper">
+                <div className="col-lg-1 menucart">
+                    <div className="DragHandleIcon">
+                        <DragHandleIcon onClick={() => handclickDrag('menua', state.menua)}></DragHandleIcon>
+                    </div>
+                </div>
+                <div className="col-lg-7 shop__layout">
+                    <div className="title_">
+                        <h2 className={classes.title}><span className={classes.titleF}>discover </span>the best</h2>
+                        <div className={classes.thumbnail}>
+                            <Swiper {...Param_}>
+                                {
+                                    tasks.list.map((item) => {
+                                        return <div className="swiper-slide">
+                                            <Item_thumpai key={item._id} item={item}></Item_thumpai>;
+                                            </div>;
+                                    })
+                                }
+                                <div class="swiper-scrollbar"></div>
+                            </Swiper>
+                            <div className={classes.icon_}>
+                                <span className='icon_InFa'>
+                                    <InstagramIcon className='InstagramIcon_'></InstagramIcon>
+                                    <FacebookIcon className='FacebookIcon_'></FacebookIcon>
+                                </span>
                             </div>
                         </div>
                     </div>
-                </section>
-            </>
-        );
-    }
-}
+                    <div className={`togglemenucart ${state.menua === true ? 'showcart' : ' '}`}>
+                    <KeyboardArrowLeftIcon></KeyboardArrowLeftIcon>
+                    </div>
+                </div>
+                <div className="col-lg-4 shop__product">
 
-export default Detailitem;
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default withStyles(styles)(Detailitem);

@@ -7,6 +7,7 @@ import Bg from './Bg';
 import Authenticity from './Authenticity';
 import Product from './Product/Product';
 import Background from './Background';
+import Submit from './Submit';
 class Home extends Component {
     render() {
         return (
@@ -24,6 +25,7 @@ class Home extends Component {
                 <Discount></Discount>
                 <Swipered></Swipered>
                 <Discount></Discount>
+                <Submit></Submit>
             </div>
         );
     }

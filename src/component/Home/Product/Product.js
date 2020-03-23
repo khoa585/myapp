@@ -5,9 +5,11 @@ import { bindActionCreators, compose } from 'redux';
 import * as taskActions from './../../../actions/index';
 class Product extends Component {
   componentDidMount() {
-    const { taskActions } = this.props;
-    const { actFetchProducts } = taskActions;
-    actFetchProducts();
+    if (!this.props.products.length) {
+      const { taskActions } = this.props;
+      const { actFetchProducts } = taskActions;
+      actFetchProducts();
+    };
   };
   render() {
     const { products } = this.props;
@@ -30,7 +32,7 @@ class Product extends Component {
     var result = null;
     if (e.length > 0) {
       result = e.slice(0, 6).map((item, index) => {
-        return <Products pid={item._id} img={item.img} star={item.start} key={index} sale={item.sale} name={item.name} price={item.price}></Products>;
+        return <Products pid={item._id} img={item.productImage} star={item.start} key={index} sale={item.sale} name={item.name} price={item.price}></Products>;
       });
     }
     return result;
@@ -38,7 +40,7 @@ class Product extends Component {
 }
 const mapStateToProps = state => {
   return {
-    products : state.task.list,
+    products: state.task.list,
   };
 };
 const mapDispatchToProps = dispatch => {

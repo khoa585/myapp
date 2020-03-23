@@ -25,11 +25,9 @@ class Detail extends Component {
     render() {
         const { products } = this.props;
         return (
-            <>
-                <Discount></Discount>
+            <div class="containerD">
                 {this.showdetail(products)}
-                <Discount></Discount>
-            </>
+            </div>
         );
     }
 }
