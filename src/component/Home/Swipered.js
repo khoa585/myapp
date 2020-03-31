@@ -14,8 +14,8 @@ const Swipered = () => {
             clickable: true
         },
         navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
+            nextEl:  '.swiper-button-next' + '.swiperB',
+            prevEl: '.swiper-button-prev' + '.swiperB',
         },
         spaceBetween: 30,
         loop: true,

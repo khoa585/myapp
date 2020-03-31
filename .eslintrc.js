@@ -2,6 +2,6 @@ module.exports = {
     parser: "babel-eslint",
     "rules": {
         "semi": 1,
-        "quotes": [1,'single']
+        "quotes": [1,'double']
     }
 }
