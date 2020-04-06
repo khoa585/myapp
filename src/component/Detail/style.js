@@ -80,11 +80,16 @@ const styles = () => ({
     width: 150
   },
   contaiC: {
+    left: "50%",
+    top: "50%",
     width: "80%",
+    height: "80%",
     position: "absolute",
-    height: "100%",
-    left: 0,
-    transform: "translate(10%)"
+    transform: "translate(-50%,-50%)",
+    background: "red",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
   },
   KeyboardArrowLeftIcon: {
     background: "white",
@@ -96,23 +101,39 @@ const styles = () => ({
     zIndex: 9999,
   },
   note: {
+    top: "10%",
     position: "absolute",
-    top: "25%"
+    right: "10%",
+    fontSize: "2em",
+    color: "#fff",
+    fontFamily: "-webkit-body",
+    background: "#c40d2e",
+    padding: 20,
+    borderRadius: "50%",
   },
   titleC: {
+    position: "absolute",
+    left: "-70%",
+    top: "30%",
     color: "#fff",
-    fontSize: "3em"
+    fontSize: "3em",
+    background: "#c40d2e",
+    padding: 10
   },
   titlecart: {
     textTransform: "uppercase"
   },
   New: {
     right: 0,
-    width: "40%",
+    width: "50%",
     position: "absolute",
     background: "#fff",
-    height: "70%",
-    bottom: 0
+    height: "40%",
+    bottom: 0,
+    zIndex: "9",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
   },
   highP: {
     height: "40%",
@@ -123,24 +144,55 @@ const styles = () => ({
   },
   context_P: {
     zIndex: "9",
-    position: "relative",
-    width: "90%",
+    position: "absolute",
+    width: "70%",
     right: 0,
-    background: "red",
+    background: "#788682",
     height: "100%",
     margin: "0 auto",
+    left: 0,
+    borderRight: "1px solid #fff",
+    borderLeft: "1px solid #fff",
   },
-  blue: {
-    background: "#7ed6df",
+  format : {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center"
   },
-  green: {
-    background: "#badc58",
+  price : {
+    fontSize: "2em",
+    fontWeight: "700",
+    color: "#fff",
   },
-  yellow: {
-    background: "#f9ca24",
+  descriptions : {
+    color: "#fff",
+    fontSize: "1.2em",
+    fontFamily: "serif",
   },
-  rose: {
-    background: "#ff7979",
+  quantity_ : {
+    display: "flex",
+    justifyContent: "flex-end"
   },
+  quantity :{
+    display: "flex",
+    left: 0,
+    position: "absolute",
+    color: "#fff",
+    fontSize: "1.5em",
+    fontFamily: "serif",
+  },
+  DragHandleIcon : {
+    width:20,
+    height:5,
+    background : "red",
+    position:"absolute"
+  },
+  DragHandleIcon_ : {
+    width:20,
+    height:5,
+    background : "red",
+    position:"absolute",
+    top:10
+  }
 });
 export default styles;

@@ -1,4 +1,4 @@
-import { takeLatest, call, put, delay } from 'redux-saga/effects';
+import { takeLatest, call, put } from 'redux-saga/effects';
 import * as authTypes from '../constants/auth';
 import axiosService from './../services/axiosServices';
 import { authenlogin } from './../apis/index';

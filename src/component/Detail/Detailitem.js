@@ -5,48 +5,18 @@ import Swiper from "react-id-swiper";
 import "swiper/css/swiper.css";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import FacebookIcon from "@material-ui/icons/Facebook";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Item_thumpai from "./Item_thumpai";
-import DragHandleIcon from "@material-ui/icons/DragHandle";
 import KeyboardArrowLeftIcon from "@material-ui/icons/KeyboardArrowLeft";
+import { CSSTransition, TransitionGroup, } from "react-transition-group";
+import { FormatPrice, FormatStar } from "../../common/Format/Format";
+import * as type from "../../constants/swiper";
 const Detailitem = props => {
   const [state, setstate] = useState({ menua: false });
-  const [activeC, setActiveC] = useState({ color: "blue", bgImgage: "0" });
+  const [activeC, setActiveC] = useState({ color: "#c1c1ce", bgImgage: "0" });
   const { classes, task } = props;
-  let colors = ["blue", "green", "yellow"];
+  let colors = ["#c1c1ce", "#b9a536", "#a22616"];
   const tasks = useSelector(state => state.task);
-  const Param_ = {
-    Swiper,
-    slidesPerView: 2,
-    spaceBetween: 30,
-    centeredSlides: true,
-    grabCursor: true,
-    freeMode: true,
-    freeModeSticky: true,
-    loop: true,
-    autoplay: {
-      delay: 8000000,
-      disableOnInteraction: false
-    },
-    height: 50,
-    scrollbar: {
-      el: ".swiper-scrollbar",
-      hide: true
-    }
-  };
-  const Paramc = {
-    direction: "vertical",
-    Swiper,
-    loop: true,
-    navigation: {
-      nextEl: ".swiper-button-next" + ".btN",
-      prevEl: ".swiper-button-prev" + ".btP"
-    },
-    autoplay: {
-      delay: 80000,
-      disableOnInteraction: false
-    }
-  };
   const handclickDrag = (sta, open) => {
     setstate({
       ...state,
@@ -58,23 +28,20 @@ const Detailitem = props => {
       backgroundColor: color
     };
   };
-  const active_color = (color,key) => {
+  const active_color = (color, key) => {
     setActiveC({ color: color, bgImgage: key });
   };
-  const showbg = (bg) => {
+  const showBG = (bg) => {
     return {
-      backgroundImage: `url(https://apiproductjs.herokuapp.com/${bg})`,
+      backgroundImage: `url(https://apiproductjs.herokuapp.com/${bg})`
     };
   };
-  console.log(task.productImage)
   return (
     <div className="container-fluid">
       <div className="row shopping__card__wrapper">
         <div className="col-lg-1 menucart">
-          <div className="DragHandleIcon">
-            <DragHandleIcon
-              onClick={() => handclickDrag("menua", state.menua)}
-            ></DragHandleIcon>
+          <div className="DragHandleIcon" onClick={() => handclickDrag("menua", state.menua)}>
+            <div className={`hamburger ${state.menua === true ? "activeIcon" : ""}`}></div>
           </div>
         </div>
         <div className="col-lg-7 shop__layout">
@@ -83,11 +50,11 @@ const Detailitem = props => {
               <span className={classes.titleF}>discover </span>the best
             </h2>
             <div className={classes.thumbnail}>
-              <Swiper {...Param_}>
-                {tasks.list.map(item => {
+              <Swiper {...type.Param_}>
+                {tasks.list.map((item, index) => {
                   return (
-                    <div className="swiper-slide">
-                      <Item_thumpai key={item._id} item={item}></Item_thumpai>;
+                    <div className="swiper-slide" key={index}>
+                      <Item_thumpai key={index} item={item}></Item_thumpai>;
                     </div>
                   );
                 })}
@@ -107,29 +74,26 @@ const Detailitem = props => {
               }`}
           >
             <div className="swiper-wrapper">
-              <Swiper {...Paramc}>
-                <div className="swiper-slide">
-                  <div className={classes.contaiC}>
-                    <div className={classes.note}>
-                      <h3 className={classes.titleC}>
-                        <span className={classes.titlecart}>black</span>sort
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-                <div className="swiper-slide">
-                  <div className={classes.contaiC}>
-                    <div className={classes.note}>
-                      <h3 className={classes.titleC}>
-                        <span className={classes.titlecart}>black</span>sort
-                      </h3>
-                    </div>
-                  </div>
-                </div>
+              <Swiper {...type.Paramc}>
+                {
+                  task.productImage.map((index, key) => {
+                    return <div key={key} className="swiper-slide">
+                      <div style={showBG(index)} className={classes.contaiC}>
+                        <div className={classes.note}>
+                          <span className={classes.titleC_}>Winter?</span>
+                        </div>
+                      </div>
+                    </div>;
+                  })
+                }
               </Swiper>
-              <div className={classes.New}></div>
+              <div style={showBG(task.productImage[0])} className={classes.New}>
+                <h3 className={classes.titleC}>
+                  <span className={classes.titlecart}>New</span> Collection
+                </h3>
+              </div>
               <div className={classes.back}>
-                <KeyboardArrowLeftIcon
+                <KeyboardArrowLeftIcon  onClick={() => handclickDrag("menua", state.menua)}
                   className={classes.KeyboardArrowLeftIcon}
                 ></KeyboardArrowLeftIcon>
               </div>
@@ -140,20 +104,30 @@ const Detailitem = props => {
           <div className={classes.highP}></div>
           <div className={classes.context_P}>
             <div className="product-card">
-              {
-                task.productImage.map((index, key) => {
-                  if (parseInt(activeC.bgImgage,10) === key) {
-                    return <div key={key} className="product-pic"><img style={{transition: '.6s linear'}} className="img-responsive" src={`https://apiproductjs.herokuapp.com/${index}`}/></div>;
-                  }
-                })
-              }
+              <TransitionGroup>
+                <CSSTransition
+                  key={activeC.bgImgage}
+                  timeout={500}
+                  classNames="item"
+                >
+                  <div>
+                    {
+                      task.productImage.map((index, key) => {
+                        if (parseInt(activeC.bgImgage, 10) === key) {
+                          return <div key={key} className="product-pic"><img className="img-responsive slideCart" src={`https://apiproductjs.herokuapp.com/${index}`} /></div>;
+                        }
+                      })
+                    }
+                  </div>
+                </CSSTransition>
+              </TransitionGroup>
               <div className="product-colors">
                 {
-                  colors.map((c,key) => {
+                  colors.map((c, key) => {
                     return <><span
                       style={showcolor(c)}
                       className={activeC.color === c ? "active" : ""}
-                      onClick={() => active_color(c,key)}
+                      onClick={() => active_color(c, key)}
                       key={key}
                     ></span><br></br></>;
                   })
@@ -162,9 +136,23 @@ const Detailitem = props => {
             </div>
             <div className="infP">
               <h3>{task.name}</h3>
-              <span>{task.price}</span>
-              <span>{task.description}</span><br />
-              <span>quantity</span>
+              <div className={classes.format}>
+                <span className={classes.price}>$ {FormatPrice(task.price)}</span>
+                <span> {FormatStar(task.star)}</span>
+              </div><br />
+              <span className={classes.descriptions}>{task.description}</span><br /><br /><br />
+              <div className={classes.quantity_}>
+                <div className={classes.quantity}><span>Quantity</span></div>
+                <div className="quantity">
+                  <button className="plus-btn" type="button" name="button">
+                    +
+                </button>
+                  <input type="text" name="name" value="1"></input>
+                  <button className="minus-btn" type="button" name="button">
+                    -
+                </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -174,3 +162,4 @@ const Detailitem = props => {
 };
 
 export default withStyles(styles)(React.memo(Detailitem));
+

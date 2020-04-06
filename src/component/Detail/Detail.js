@@ -3,7 +3,7 @@ import { bindActionCreators, compose } from "redux";
 import * as productActions from "./../../actions/index";
 import { connect } from "react-redux";
 import Detailitem from "./Detailitem";
-import Discount from "../Home/Discount";
+import { withRouter } from "react-router";
 class Detail extends Component {
   componentDidMount() {
     const { productActions } = this.props;
@@ -39,4 +39,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 const withconnect = connect(mapStateToProps, mapDispatchToProps);
-export default compose(withconnect)(React.memo(Detail));
+export default compose(withconnect,withRouter)(React.memo(Detail));
